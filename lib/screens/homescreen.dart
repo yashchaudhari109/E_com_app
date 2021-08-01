@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:ecomapp/component/customizedgridcard.dart';
 import 'package:ecomapp/constant.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +13,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  int random(min, max) {
+    var rn = new Random();
+    return min + rn.nextInt(max - min);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +39,10 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             itemCount: products.length,
             itemBuilder: (BuildContext context, index) {
-              return CustomizedGridCard(index: index);
+              return CustomizedGridCard(
+                index: index,
+                price: random(500, 1000),
+              );
             }),
       ),
     );
